@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Assiette — Suivi calorique</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Assiette">
+<meta name="theme-color" content="#2B4A34">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAIAAAB7GkOtAAAW+klEQVR4nO3dP48sxbnA4ebIIvBXISW5MckVlglviuTEn4kEidShEZITYn8jAiIHwx3vmZ3dne6prnr/PI8IEazOVL2/rurds1989e3XGwD9fFr9BQCwhgAANCUAAE0JAEBTAgDQlAAANCUAAE0JAEBTAgDQlAAANCUAAE0JAEBTAgDQlAAANCUAAE0JAEBTAgDQlAAANCUAAE0JAEBTAgDQlAAANCUAAE0JAEBTAgDQlAAANCUAAE0JAEBTAgDQlAAANCUAAE0JAEBTAgDQlAAANCUAAE0JAEBTAgDQlAAANCUAAE39afUXAOP9/MOPZ/xn//r3v53xn4VVvvjq269Xfw2wz0nz/XkKQS4CQGhhZ/3jVIGwBIBACoz7R0gCQQgAKzWZ+O/TA1YRAKYy8T+kB0wjAJzO0D9MDDiVAHAKQ384MWA4AWAkc38CJWAUAeBZhv5CYsAzBICDzP1QlIADBIB9zP3glIDHCQAPMffTUQI+JAC8x9wvQAl4iwBwX+rRf9LI82dCMQLAZ7LMuIDjzB8d6QgAfwg7v1IPLH+qRCYA3UWbUOUHkz9w4hCAvoJMouYDyKfAQgLQ0fKhY9zc5XNhMgHoZeGIMVx28UkxgQB0sWSgGCVD+Ow4iQDUN3l8GByn8mkykABUNnNYmBST+XB5ngDUNG06GA3L+aw5TACqmTMOzIKAfPTsJQB1TNj/Nn8KVgIPEoAKbHhesyr4kADkdvYmt8MLsEh4iwAkdurGtquLsVp4TQBSOm8z28nlWTxcCUAydi9DWEhsApDLSZvWjm3LimpOAHKwUTmP1dWWAERnczKHldaQAIR2xp60IXmHJdeKAARlH7KQ5deEAEQ0fPvZexxgHZYnALHYckRjTRYmAIGM3Wm2GQNZnCUJQBQDN5jdxUms0mIEYD2bilys2DI+rf4CurOXSGfgSlvy++65cgJYadTqN/pZwgLOTgDWsHMow2LOyxXQAjYMlYxah66D5nMCmG3IKjf6R/n1+y8f/De/+en3U7+SAqztdARgHg/+AT0egHdow5VFnosATOLhKKYhAbircxWs9iwEYAb7IazzAnCjWw+s+RQE4HTP7wTb4Jh//+NfH/47v/3y3YSv5EafGFj8wQnAuWyAUz0y4t+3JAAvlY+BLRCZAJzFEXi458f9a8sD8FLVGNgLYQnAKTz1DHHGxL8RKgBXJUtgUwQkAONZ6IdNmPg3YgbgpUoxsDWiEYDBLPG95g/9l+IH4KpGCWyQUARgpCcXd6uVvXbuXyUKwIUMbM12yqkEYBhr+kNBhv5L6QJwlb0E9ksEAjCG1fyOgHP/Km8ALlJnwK5ZTgAGeGYdF17Ekef+VfYAXOUtge2zkAA8y/K9kWLuX5UJwEXSDNhEqwjAUyzcl3KN/otiAbjImAFbaQkBOM6Svcg4969KBuAqVwlsqPkE4CCLdUs++i9qB+AiUQZsq8kE4AjLtMDov+gQgIssGbC5ZhKA3Q4v0AKrs8zcv+oTgIvyGSiwy2YSgH3arst6o3+XSp3QAK4EYIeeK7L56P9Q0jakyEDPHTeTADyq4Vo0+o9JlIT4GWi472YSgId0W4VG/0DxexA8A91230wC8LFu68/0P0/YGGhATwLwgVYrz+ifKWAMImeg1U6cRgDe02fNGf0LRStB2Az02Y/TCMCbmqw2oz+OOCXQgCYE4L4m68z0jylICWJmoMnenEMA7uiwwoz+FJaXQANq+7T6C6gj0doy/bP481/+efln1Rfw6/df/vr9l6v+729JtNeCcwK4dezhIsuKNPpTW3ggCHgUqL1V5xCAzxReUkZ/JUtKoAH1CMB/FV5Mpn9JMrCV3rYTeAfwh8LLyPSvasnrgWivBI7twWd+60AlTgDbVnf6G/19TD4NOAfU4ARQlunfyuTTQMzvDmIvAaj57GD69zQ/A9P+X+9zEXRM9yugetPf6Odi2qVQnOugetv5bK1PAPWWi+nP1bTTgHNAXq0DcIDpTy7TGhAkA5F3aEB9r4AOZD/s2jL6+dCcG6Eg10GVdvepmp4AKq0P059HzLkRynsO6HkR1DEAlT5p059d+jTggEqT4UEdA3BAzMd/058DJhwFIjQg5p6Npl0Aylz+mP48QwPu6nYI6BUA0x+uzj4KaEB8jQJQ43P99z/+ZfozUPkGHFBjVjyiUQAOiPb4b/RzhlOPAssbEG0Xh9IlAAUuf0x/TqUBLzU5BLQIgOkPj9CAlzo0oEUAsjP9mea866DlDeC1+gHI/vhv+jNfyQY4BLxWPACmPxyjARe1G1A8AHuZ/nB10nVQugYUVjkAqdNt+hNEvQbslXqSvK9yAPaK82hg+hNKsQbE2enLlQ3A3mjHWROmPwE1b0DVQ0DNAOT9tEx/wirWgL3yTpV31AzAXnEe/yGySg2w67eSAXD5A+fp3IB6h4CCAUjK9CeLOb9ongmqBSDp47/pTy7Df0TAIWCJUgEw/WEmDciuVAAyMv1JrUYD2qoTgIyP/6Y/BRRoQNtDQJ0AALBLkQB4/IeFHAKSKhKAXUx/GK5hAwqoEIB0KTb9KalAA3ZJN3leqxCAXRpGHqbJ/jNi3eZD+gCki7DHf2ob2ACHgLOlD8Auy/Nu+tNB6gYsnxIz5Q5Arvya/vSRugG75JpCN3IHYJdWYYfl8r4P6DMrEgcgV3g9/sNhDgEnSRyAXdYm3fSnp7wXQU0OAVkDkCi5pj+d5b0I2iXRRHopawB2aRJziGlUAxwChksZgESx9fgPA0V+GZBoLl2lDMAuHTIOwSW9CCo/PfIFIFFmPf7DVdKLoF0STaeLfAHYZWHATX+4kfEcUPsQkCwA6QILDOcQMEqyAOzi8R+iyXgRVPgQkCkAWdJq+sM7Ml4E7ZJlUm25ArBL4WgDm0PACGUDsIrHf/hQ+UNAFmkCsOtUVTXXUMaQBoQ9BGS5BUoTgBQ8/gOJ5AiAx3+oxyFguRwBSMHjP+yVrgHFCMAYpj+QToIAuP+BwnIdAordAiUIQHwe/4GMogfA4z+U5xCwSvQAxOfxH57nR8OWEACgCN8OtFfoAMS///H4D6MkOgSUuQUKHQAAzlMkAB7/oYDnDwExXwWHFTcAkc9NAI8LO83iBgBoKNEhoIAKAXD/A8xX4BYoaADCnpiAs5U8BMScaUEDEJzHf6CA9AEocAoDbmT5mYDs8ydiAGKela48/kN8boEeETEAAFkOAanlDkD28xdwnjmHgNRTKHcA5nP/A9M4BJwtXAACXpMBDBFtvoULwOPmn7w8/kMuboHelzgAQHlugU4VKwDRzkdAdtG+HzTUlIsVgMjc/8ASDgHnyRqAvJduQD1JJ1LWAAA8KNotUByBAhDqauyG+x9YqNgtUJxZFygAAMyUMgBJr9uAwjLOpZQBmMz9Dyz35C2Q1wB3RQlAnEsxgLMFmXhRAgDAZPkCkPGiDXhe/FugdNMpXwAm8wIAqEoAAJoKEYAg70OA4Cr9RFiEuRciAI+bfMXm/gcq8RrgRrIAADCKAACZVLoFWk4AAJpaH4AIb0Lu8gIA6gn1d0Isn37rA/C4XG9XgJ4STapMAQDYvAYYRwAAmhIAoJdQrwHWEoD7vAEGylscgOUvwYGMyrwGWDsD05wAEr1YB5rLMq/SBACAsQQAaMd74AsBuMMbYKADAQBSKvMeeCEBAGhqZQB8DyjAwkmY4wSQ5XuqAC5STK0cAQBgOAG45VuAoAPfCboJAJCXbwR6kgAANCUAAE0JAEBTAgDQlAAANCUAAE0tC8DjP/2c4gfqAG48PrtW/W0QTgBAU34WTAA+48eAIRc/C/YMAQBoSgAAmhIAgKYEAKApAQBoSgAAmhIAgKYEAKApAQBoSgAAmhIAgKYEAKApAQBoSgAAmhIAgKYEAKApAQBoSgAAmhIAgKYEAKApAQBoSgAAmhIAgKYEAKApAfjM//zf/67+EoAdfvvlu9VfQmICADT1zU+/r/4SFlsWgL/+/W8P/ps///DjqV8JwBken12Pz8OxnAAAmhIAgKYEAKApAQBoSgAAmhIAgKYEAMjKT4E9SQBu+WFg6MBPgW0CANBWjgD4YWAglxRTa2UAVv30M0AcCydhjhMAAMMJAJCSbwF6ngDc4RuBgA4EAGjH94BeCABAU2kCkOJ7qgC2PPNqcQB8JyhwQJk3wGtnYJoTwGTeAwPlCQDQizfAVwIA0JQAAMmUeQGwXKYAZHmxDnSWaFKtD0DYbwTyHhjqCfUCYPn0Wx8AAJYQACATLwAGEgCAppIFYPLbFa8BoJIJLwASvQHeggRg+ZsQIIVK9z8R5l6IAAAwnwB8wC0QUFW+AOS6YgNGefL+xwuA1/IFAIAhogQgwvsQgDmCTLwoAYjMawBYLv79T0YpA5Duog0oL+NcShkAAJ4XKABBLsXucgsEC1X6+a8t0qwLFACAM3gB8JasAch43QZUlXQiZQ3AfG6BYIli9z+hxApAnKsxoIZo9z+hplysAAC85PH/VIkDMP/SzS0Q5DLn8T/pC4AtYABCnY8ABoo238IFIDiHAJjG/c/Zcgcg78kLOJv7nw/lDgBQlcf/CSIGINo12Q23QBBftO/+3EJOtogB2CX1+Qu4K8vjf/b5kz4ASzgEAAUEDUDAsxIwx/OP/+5/HhQ0ALssOYU5BEBz2e9/thoBAMoo+fgfVtwAxDwxAewVdprFDcAuboGggESP/wXuf7YyAQBgr9AB2HVucgiA1LJ87/+2c9qEvf/ZggcA4HFe/+4lAM9yCIDnJXr8ryR6AOLfAgFPGjL9Y77+jXz/s8UPQAoOAUBGCQLgEACFefxfKEEAUnAIANIRgGE0APbK9fhfT44AuAWCetJN/2L3P1uWAGThEAAkkiYADgFQicf/CNIEIAuHAPiQH/sKomwAHAKgtrCP/4lkCkCWU5VDALyj/ON/lkm15QrAXgujrQFw16jp7/F/iGQBSJRW4CSRv/E/14xKFoC9HAIgjoyXP4Uf/7eMAUgUWA2Aq4yXP3slmk4X+QKwV+2AQwoZn/23BtMjZQASZdYhAAby+D9WygDsVT7jEFnSy58OcyNrABLF1iGAzpJe/uyVaCK9lDUAe62NuQbQ08Dp7/H/DIkDkCu5GgCHRb7637LNopcSB2CvJkmHIPJe/vSZFbkDkCu8xw4Bv/3y3eWf4V8PnCfv5c9euabQjdwB2Gt52Pc24OUu0gCySD39l0+JmdIHIF1+H2/A612kAcSXevrvlW7+3EgfgL1S5P2dOx8NILLs6zPFfBioQgDSRfj9Q8CHWyj7HqOqsSvT4/8EFQKwV4TIv9WAB7eQBhBNgekfYTJMViQAe1Mc4ZN+3YBdW0gDiKPh9C/w+L+VCUABBjowWZ0A5D0EHP42f80gAo//edUJQFJPbh4NYK0C07+zUgFIdwj49fsvn/+PaACr1Jj+bR//t2374qtvv179NQyW5eMcMv1f+vNf/jn2PwhvGf7YYfovUeoE0JyjAHNYaWUUDECWi6AzHnnsTM52xhrz+L9KwQAcoAHwiM7Tv6SaAUgUag0gi0rT/4BEU+VxNQOw5bkI2jSADIpNf5c/F2UDcIAGwF3Np39hlQOQK9oaQEzFpv8BuSbJLpUDcMDaR4OTGiADHHPS4lk7/T3+v1Q8AAfSXa8Bm6MA+520ZtJN/8KP/1v5AGwa8P80gMeZ/he1p//WIQAZndcAGeB95y2SXPf+TbQIQLpDwHbmbtEA3nLe2lg+/T3+39UiAJsGfE4DeM30f6nD9N/6BOCY2g2QAS5OXQwZp38fjQKQNOmn7h8N4NQ1sHz6H5N0VhxQ8PcBvC/pYXD4Lw+44XcJNHR2/iNM/6T7fZpGJ4CLjC8DtvP3kqNAN6b/Xa2m/9YwAMc0aYAMdDDhg046/RvqGIC8kZ+wrzSgtgmfb4Tpf0zeyXBYu3cAV3mPh2e/D7jwVqCYOWkPMv3z7u7J+gZgy7xK5jRgk4ESpp3qTP90Ol4BPSPIxeI3P/0+Z7O5Ecpu2oN/3unfWesTwHZ0ucR5XnAU4C3dHvy3/Nt5vu4B2PIvmmkN2GQgiZnnNtM/NQHYtvxLZ2YDNhkIbPKVnemf3Z9WfwEMcNmH0zJwmTIyEErb0c8znAD+UOMJYvJRYJOBAOa/qI82/Wts3iUE4L9qLKP5DdhkYJEl36Nl+lciAJ8ps5hkoDaj/6LMhl1FAG6VWVJLGnChBCdZ+GMZpn9JAnBHmYW1sAGbDAy19ifyTP+qfBfQMD//8GO05TX5u4NuXGeWEhy2/CexA47+zY/7juMEcN/hFRatARdrjwJXSvCg5XP/otj0j7k31xKAN9VbZ0EysCnBG4LM/S3q6N8q7sq1BOA99VZbnAZcKMEWae5fmP59CMAHSq65aBnYWpYg2tzfAo/+rehOXE4APlZ15QXMwEXhGAQc+heRR/9Wdw8uJwAPqbr+wjbgqkAMwg79K9O/LQF4VOFVGD8DVyl6EH/iXwUf/VvpfReBAOxQey0mysBLy5OQaNy/FH/0b9V3XAQCsE/5FZk0A3cNbEPSKX9XitG/NdhrEQjAbuXXZaUGcMP05yUBOOKZn0TPskBloJjyo3/Ls7niEICDmixTGSggy+jf2myrOATguD6LVQaSSjT6t04bKg4BeEq3JasEKeSa+xfdtlIQAvCshgtXBsLKOPq3lpsoCAEYoOfylYFQko7+rev2CUIAxnjyN1SkXsdKsFDeub/13jVBCMAwzVezDEyWevRv7fdLEAIwkjW9KcHJss/9CzslCAEY7PnfVlpjccvAcEb/RY0NEoQAjGeJv6QET6ox9y9sjWgE4BQW+l1i8KBKQ//KpghIAM7y/HLf6q54Jbir5Nzf7IXABOBcnno+1DwGVYf+lS0QmQCczgZ4XJMYlB/6VxZ/cAIwgyPwAcVi0GfoX1jzKQjAJPbDk9L1oNvEf8lqz0IA5hmyKzYb44UgVeg8629Y5LkIwGwejuYY3gZT/kPWdjoCsICnJIqxpJP6tPoL6GjUKh+16+AZpn9eTgAr2TmkZgFnJwCLDXyKt4uYxrqtwRXQYgNXvxsh5jD9y3ACiMKmIj6rtBgBCGTsI7wNxkAWZ0kCEMvwaxw7jSdZk4UJQES2HBFYh+UJQFBnvNG1/XiQ5deEAIRmHzKZJdeKAER30jd32pPcsNIaEoAcbE7OY3W1JQCZ2KiMZUU1JwDJnPfjvjZtKxYSmwAkZfdymMXDlQAkdupf/mMzF2O18JoA5Hb2XwBnYxdgkfAWAahgwt8DapOnY1XwIQGow4bnwkrgQQJQzZzfCmD/B+SjZy8BqGnaL4cxDpbzWXOYAFQ283eEmQ6T+XB5ngDUN/lXRRoWp/JpMpAAdLHkNwYbH0P47DiJAPSy8BfHGyi7+KSYQAA6WjhcLoyYu3wuTCYAfS0fNxfNh45PgYUEoLsgA+iq/CTyB04cAsAfog2mq9QTyp8qkQkAnwk7sG4EnF/+6EhHALgvyzi766QZ58+EYgSA96QeeVwY/bxFAHiIEqRj7vMhAWAfJQjO3OdxAsBBShCKuc8BAsCzlGAhc59nCAAjicEEhj6jCACnUILhzH2GEwBOJwaHGfqcSgCYSgw+ZOgzjQCwkh5sJj7rCACBNOmBiU8QAkBoBZJg3BOWAJBP2CqY9eQiABR0UiHMd4oRAICmPq3+AgBYQwAAmhIAgKYEAKApAQBoSgAAmhIAgKYEAKApAQBoSgAAmhIAgKYEAKApAQBoSgAAmhIAgKYEAKApAQBoSgAAmhIAgKYEAKApAQBoSgAAmhIAgKYEAKApAQBoSgAAmhIAgKYEAKApAQBoSgAAmhIAgKYEAKApAQBoSgAAmhIAgKYEAKApAQBoSgAAmvoPIZaXG2M9Qq8AAAAASUVORK5CYII=">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F2F4EC;
+    --surface:#FFFFFF;
+    --ink:#202D22;
+    --ink-soft:#5B6459;
+    --forest:#2B4A34;
+    --forest-dark:#17281B;
+    --yolk:#E8A93A;
+    --yolk-soft:#FBEBCB;
+    --coral:#E15B45;
+    --coral-soft:#FBE3DE;
+    --line:#DEE3D2;
+    --radius:20px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+  }
+  .app{
+    max-width:480px;
+    margin:0 auto;
+    min-height:100vh;
+    background:var(--bg);
+    display:flex;
+    flex-direction:column;
+    padding-bottom:40px;
+  }
+  header.top{
+    padding:28px 22px 12px;
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+  }
+  header.top .brand{
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    font-size:22px;
+    letter-spacing:-0.02em;
+    color:var(--forest-dark);
+  }
+  header.top .brand em{
+    font-style:italic;
+    font-weight:500;
+    color:var(--yolk);
+  }
+  .settings-btn{
+    border:none;
+    background:none;
+    cursor:pointer;
+    color:var(--ink-soft);
+    padding:6px;
+    border-radius:10px;
+  }
+  .settings-btn:hover{background:rgba(0,0,0,0.05);}
+  .settings-btn svg{width:20px;height:20px;display:block;}
+
+  /* PLATE RING — signature element */
+  .plate-wrap{
+    padding:6px 22px 8px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  .plate-date{
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    color:var(--ink-soft);
+    margin-bottom:14px;
+  }
+  .plate-svg-wrap{position:relative;width:250px;height:250px;}
+  .plate-center{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+  }
+  .plate-remaining-label{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--ink-soft);
+    margin-bottom:2px;
+  }
+  .plate-remaining-value{
+    font-family:'IBM Plex Mono',monospace;
+    font-weight:600;
+    font-size:38px;
+    line-height:1;
+    color:var(--forest-dark);
+  }
+  .plate-remaining-value.over{color:var(--coral);}
+  .plate-sub{
+    font-size:12px;
+    color:var(--ink-soft);
+    margin-top:6px;
+    font-family:'IBM Plex Mono',monospace;
+  }
+  .plate-status{
+    margin-top:16px;
+    font-size:13px;
+    color:var(--ink-soft);
+    text-align:center;
+    max-width:280px;
+  }
+
+  /* action buttons */
+  .actions{
+    display:flex;
+    gap:12px;
+    padding:22px 22px 8px;
+  }
+  .action-btn{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+    padding:16px 8px;
+    border-radius:var(--radius);
+    border:1px solid var(--line);
+    background:var(--surface);
+    cursor:pointer;
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:13px;
+    color:var(--forest-dark);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .action-btn:hover{box-shadow:0 4px 14px rgba(43,74,52,0.08); transform:translateY(-1px);}
+  .action-btn svg{width:22px;height:22px;color:var(--forest);}
+  .action-btn.primary{background:var(--forest-dark);color:#fff;border-color:var(--forest-dark);}
+  .action-btn.primary svg{color:var(--yolk);}
+
+  /* meals list */
+  .section-title{
+    padding:20px 22px 6px;
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:16px;
+    color:var(--forest-dark);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .section-title .count{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+    font-weight:500;
+  }
+  .meal-list{padding:6px 22px 0; display:flex; flex-direction:column; gap:10px;}
+  .meal-empty{
+    padding:28px 16px;
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:13px;
+    background:var(--surface);
+    border:1px dashed var(--line);
+    border-radius:var(--radius);
+  }
+  .meal-card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:14px 14px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .meal-icon{
+    width:38px;height:38px;border-radius:12px;
+    background:var(--yolk-soft);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+    font-size:17px;
+  }
+  .meal-info{flex:1; min-width:0;}
+  .meal-name{font-weight:600; font-size:14px; color:var(--ink); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  .meal-time{font-size:11px; color:var(--ink-soft); margin-top:1px;}
+  .meal-cal{
+    font-family:'IBM Plex Mono',monospace;
+    font-weight:600;
+    font-size:14px;
+    color:var(--forest-dark);
+    white-space:nowrap;
+  }
+  .meal-del{
+    border:none;background:none;cursor:pointer;color:var(--ink-soft);padding:4px;
+    display:flex;align-items:center;
+  }
+  .meal-del:hover{color:var(--coral);}
+  .meal-del svg{width:16px;height:16px;}
+
+  /* budget mini info */
+  .stat-row{
+    display:flex;
+    gap:10px;
+    padding:16px 22px 0;
+  }
+  .stat-box{
+    flex:1;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:12px 12px;
+  }
+  .stat-label{font-size:10px; text-transform:uppercase; letter-spacing:0.08em; color:var(--ink-soft);}
+  .stat-value{font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:16px; color:var(--forest-dark); margin-top:3px;}
+
+  /* modal */
+  .overlay{
+    position:fixed; inset:0; background:rgba(23,40,27,0.45);
+    display:flex; align-items:flex-end; justify-content:center;
+    z-index:50; opacity:0; pointer-events:none; transition:opacity .2s ease;
+  }
+  .overlay.open{opacity:1; pointer-events:auto;}
+  .sheet{
+    background:var(--bg);
+    width:100%; max-width:480px;
+    border-radius:24px 24px 0 0;
+    max-height:88vh;
+    overflow-y:auto;
+    padding:22px 22px 28px;
+    transform:translateY(20px);
+    transition:transform .25s ease;
+  }
+  .overlay.open .sheet{transform:translateY(0);}
+  .sheet-title{
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    font-size:20px;
+    color:var(--forest-dark);
+    margin:0 0 4px;
+  }
+  .sheet-sub{font-size:13px;color:var(--ink-soft); margin:0 0 18px;}
+  .field{margin-bottom:14px;}
+  .field label{
+    display:block; font-size:12px; font-weight:600; text-transform:uppercase;
+    letter-spacing:0.06em; color:var(--ink-soft); margin-bottom:6px;
+  }
+  .field input, .field select{
+    width:100%; padding:12px 13px; border-radius:12px; border:1px solid var(--line);
+    background:var(--surface); font-family:'Inter',sans-serif; font-size:14px; color:var(--ink);
+  }
+  .field input:focus, .field select:focus{outline:2px solid var(--forest); outline-offset:1px;}
+  .choice-row{display:flex; gap:8px; flex-wrap:wrap;}
+  .choice{
+    flex:1; min-width:88px; text-align:center; padding:10px 8px; border-radius:12px;
+    border:1px solid var(--line); background:var(--surface); cursor:pointer;
+    font-size:13px; font-weight:500; color:var(--ink);
+  }
+  .choice.selected{background:var(--forest-dark); color:#fff; border-color:var(--forest-dark);}
+  .btn{
+    width:100%; padding:14px; border-radius:14px; border:none; cursor:pointer;
+    font-family:'Inter',sans-serif; font-weight:700; font-size:14px; margin-top:6px;
+  }
+  .btn-primary{background:var(--forest-dark); color:#fff;}
+  .btn-primary:disabled{opacity:0.5; cursor:not-allowed;}
+  .btn-ghost{background:none; color:var(--ink-soft); text-decoration:underline; font-weight:500;}
+  .two-col{display:flex; gap:10px;}
+  .two-col .field{flex:1;}
+
+  .photo-preview{
+    width:100%; border-radius:16px; margin-bottom:14px; max-height:220px; object-fit:cover;
+    border:1px solid var(--line);
+  }
+  .loading-row{
+    display:flex; align-items:center; gap:10px; padding:16px 4px; color:var(--ink-soft); font-size:13px;
+  }
+  .spinner{
+    width:16px;height:16px;border-radius:50%;
+    border:2px solid var(--line); border-top-color:var(--forest);
+    animation:spin .7s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .estimate-box{
+    background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:16px; margin-bottom:14px;
+  }
+  .estimate-cal{
+    font-family:'IBM Plex Mono',monospace; font-size:28px; font-weight:600; color:var(--forest-dark);
+  }
+  .confidence-tag{
+    display:inline-block; font-size:11px; padding:3px 9px; border-radius:100px; margin-top:6px;
+    background:var(--yolk-soft); color:#8A6113; font-weight:600;
+  }
+  .error-text{color:var(--coral); font-size:13px; margin:6px 0 10px;}
+  .hidden{display:none !important;}
+  input[type=file]{display:none;}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+
+  <header class="top">
+    <div class="brand">Ass<em>iette</em></div>
+    <button class="settings-btn" id="settingsBtn" title="Profil">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9c.14.36.5 1 .51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+    </button>
+  </header>
+
+  <div class="plate-wrap">
+    <div class="plate-date" id="plateDate">—</div>
+    <div class="plate-svg-wrap">
+      <svg width="250" height="250" viewBox="0 0 250 250">
+        <circle cx="125" cy="125" r="112" fill="none" stroke="#DEE3D2" stroke-width="3"/>
+        <circle cx="125" cy="125" r="98" fill="none" stroke="#E9ECE0" stroke-width="18"/>
+        <circle id="progressRing" cx="125" cy="125" r="98" fill="none" stroke="#2B4A34" stroke-width="18"
+                stroke-linecap="round" transform="rotate(-90 125 125)" stroke-dasharray="615.75" stroke-dashoffset="615.75"/>
+      </svg>
+      <div class="plate-center">
+        <div class="plate-remaining-label">restant</div>
+        <div class="plate-remaining-value" id="remainingValue">—</div>
+        <div class="plate-sub" id="plateSub">/ — kcal</div>
+      </div>
+    </div>
+    <div class="plate-status" id="plateStatus"></div>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-box">
+      <div class="stat-label">Consommé</div>
+      <div class="stat-value" id="statConsumed">0 kcal</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Objectif jour</div>
+      <div class="stat-value" id="statBudget">— kcal</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Repas</div>
+      <div class="stat-value" id="statMeals">0</div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="action-btn primary" id="photoBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+      Photo du plat
+    </button>
+    <button class="action-btn" id="manualBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+      Ajout manuel
+    </button>
+  </div>
+
+  <div class="section-title">Aujourd'hui <span class="count" id="mealCount">0 repas</span></div>
+  <div class="meal-list" id="mealList"></div>
+
+</div>
+
+<input type="file" id="fileInput" accept="image/*" capture="environment">
+
+<!-- ONBOARDING / PROFILE SHEET -->
+<div class="overlay" id="profileOverlay">
+  <div class="sheet">
+    <p class="sheet-title">Ton profil</p>
+    <p class="sheet-sub">Ces infos servent à calculer ton budget calorique quotidien.</p>
+
+    <div class="two-col">
+      <div class="field">
+        <label>Âge</label>
+        <input type="number" id="fAge" placeholder="28" min="10" max="100">
+      </div>
+      <div class="field">
+        <label>Sexe</label>
+        <select id="fSex">
+          <option value="homme">Homme</option>
+          <option value="femme">Femme</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="field">
+        <label>Taille (cm)</label>
+        <input type="number" id="fHeight" placeholder="175" min="100" max="250">
+      </div>
+      <div class="field">
+        <label>Poids (kg)</label>
+        <input type="number" id="fWeight" placeholder="72" min="30" max="300" step="0.1">
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Niveau d'activité</label>
+      <select id="fActivity">
+        <option value="1.2">Sédentaire (peu ou pas de sport)</option>
+        <option value="1.375">Léger (1-3 jours/semaine)</option>
+        <option value="1.55" selected>Modéré (3-5 jours/semaine)</option>
+        <option value="1.725">Actif (6-7 jours/semaine)</option>
+        <option value="1.9">Très actif (sport intense / physique)</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Objectif</label>
+      <div class="choice-row" id="goalChoices">
+        <div class="choice" data-goal="perdre">Perdre du poids</div>
+        <div class="choice" data-goal="maintenir">Maintenir</div>
+        <div class="choice" data-goal="prendre">Prendre du poids</div>
+      </div>
+    </div>
+
+    <div class="field" id="paceField">
+      <label>Rythme</label>
+      <div class="choice-row" id="paceChoices">
+        <div class="choice" data-pace="250">Doux (~0,25 kg/sem)</div>
+        <div class="choice" data-pace="500">Standard (~0,5 kg/sem)</div>
+        <div class="choice" data-pace="750">Rapide (~0,75 kg/sem)</div>
+      </div>
+    </div>
+
+    <div class="field" style="margin-top:22px; padding-top:16px; border-top:1px solid var(--line);">
+      <label>Clé API Anthropic (pour l'analyse photo)</label>
+      <input type="password" id="fApiKey" placeholder="sk-ant-...">
+      <p class="sheet-sub" style="margin:6px 0 0;">Optionnel. Sans clé, tu peux toujours ajouter tes repas manuellement. Crée une clé sur console.anthropic.com — elle reste stockée uniquement sur ton téléphone.</p>
+    </div>
+
+    <p class="error-text hidden" id="profileError"></p>
+    <button class="btn btn-primary" id="saveProfileBtn">Calculer mon budget</button>
+  </div>
+</div>
+
+<!-- MANUAL ENTRY SHEET -->
+<div class="overlay" id="manualOverlay">
+  <div class="sheet">
+    <p class="sheet-title">Ajouter un repas</p>
+    <p class="sheet-sub">Entre le nom et les calories estimées.</p>
+    <div class="field">
+      <label>Nom du plat</label>
+      <input type="text" id="mName" placeholder="Ex. Poulet riz légumes">
+    </div>
+    <div class="field">
+      <label>Calories (kcal)</label>
+      <input type="number" id="mCal" placeholder="450" min="0">
+    </div>
+    <button class="btn btn-primary" id="saveManualBtn">Ajouter au journal</button>
+    <button class="btn btn-ghost" id="cancelManualBtn">Annuler</button>
+  </div>
+</div>
+
+<!-- PHOTO ANALYSIS SHEET -->
+<div class="overlay" id="photoOverlay">
+  <div class="sheet">
+    <p class="sheet-title">Analyse du plat</p>
+    <img class="photo-preview hidden" id="photoPreviewImg">
+    <div class="loading-row hidden" id="photoLoading">
+      <div class="spinner"></div> Analyse de la photo en cours…
+    </div>
+    <p class="error-text hidden" id="photoError"></p>
+    <div class="hidden" id="photoResult">
+      <div class="estimate-box">
+        <div class="field" style="margin-bottom:10px;">
+          <label>Nom du plat</label>
+          <input type="text" id="pName">
+        </div>
+        <div class="field" style="margin-bottom:6px;">
+          <label>Calories estimées</label>
+          <input type="number" id="pCal">
+        </div>
+        <span class="confidence-tag" id="pConfidence"></span>
+      </div>
+      <p class="sheet-sub" style="margin-top:-6px;">Estimation automatique — ajuste si besoin avant de valider.</p>
+      <button class="btn btn-primary" id="confirmPhotoBtn">Ajouter au journal</button>
+    </div>
+    <button class="btn btn-ghost" id="cancelPhotoBtn">Annuler</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  const RING_CIRC = 615.75; // 2*pi*98
+  let profile = null;
+  let todayEntries = [];
+  let pendingPhotoBase64 = null;
+  let pendingPhotoMedia = null;
+  let selectedGoal = 'maintenir';
+  let selectedPace = '500';
+
+  function todayKey(){
+    const d = new Date();
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  }
+  function todayLabel(){
+    const d = new Date();
+    return d.toLocaleDateString('fr-FR', { weekday:'long', day:'numeric', month:'long' });
+  }
+
+  async function storageGet(key){
+    try{ return localStorage.getItem('assiette_' + key); }catch(e){ return null; }
+  }
+  async function storageSet(key, value){
+    try{ localStorage.setItem('assiette_' + key, value); }catch(e){ console.error(e); }
+  }
+
+  function calcBudget(p){
+    let bmr;
+    if(p.sex === 'homme'){
+      bmr = 10*p.weight + 6.25*p.height - 5*p.age + 5;
+    } else {
+      bmr = 10*p.weight + 6.25*p.height - 5*p.age - 161;
+    }
+    const tdee = bmr * p.activity;
+    let budget = tdee;
+    if(p.goal === 'perdre') budget = tdee - p.pace;
+    if(p.goal === 'prendre') budget = tdee + p.pace;
+    budget = Math.max(1200, Math.round(budget));
+    return { bmr: Math.round(bmr), tdee: Math.round(tdee), budget };
+  }
+
+  function renderRing(consumed, budget){
+    const ratio = budget > 0 ? consumed / budget : 0;
+    const ring = document.getElementById('progressRing');
+    const offset = RING_CIRC * (1 - Math.min(ratio,1));
+    ring.setAttribute('stroke-dashoffset', offset);
+    let color = '#2B4A34';
+    if(ratio >= 1) color = '#E15B45';
+    else if(ratio >= 0.9) color = '#E8A93A';
+    ring.setAttribute('stroke', color);
+
+    const remaining = budget - consumed;
+    const remainEl = document.getElementById('remainingValue');
+    remainEl.textContent = (remaining < 0 ? '+' : '') + Math.abs(remaining).toLocaleString('fr-FR');
+    remainEl.classList.toggle('over', remaining < 0);
+    document.getElementById('plateSub').textContent = '/ ' + budget.toLocaleString('fr-FR') + ' kcal';
+
+    const statusEl = document.getElementById('plateStatus');
+    if(remaining < 0){
+      statusEl.textContent = 'Budget dépassé de ' + Math.abs(remaining) + ' kcal aujourd\'hui.';
+    } else if(ratio >= 0.9){
+      statusEl.textContent = 'Tu approches de ton objectif du jour.';
+    } else {
+      statusEl.textContent = 'Il te reste de la marge pour aujourd\'hui.';
+    }
+  }
+
+  function renderStats(consumed, budget){
+    document.getElementById('statConsumed').textContent = consumed.toLocaleString('fr-FR') + ' kcal';
+    document.getElementById('statBudget').textContent = budget.toLocaleString('fr-FR') + ' kcal';
+    document.getElementById('statMeals').textContent = todayEntries.length;
+    document.getElementById('mealCount').textContent = todayEntries.length + (todayEntries.length>1 ? ' repas' : ' repas');
+  }
+
+  function renderMeals(){
+    const list = document.getElementById('mealList');
+    list.innerHTML = '';
+    if(todayEntries.length === 0){
+      list.innerHTML = '<div class="meal-empty">Aucun repas enregistré. Ajoute ta première photo ou saisie manuelle.</div>';
+      return;
+    }
+    todayEntries.slice().reverse().forEach(entry => {
+      const card = document.createElement('div');
+      card.className = 'meal-card';
+      card.innerHTML = `
+        <div class="meal-icon">${entry.source === 'photo' ? '📷' : '✏️'}</div>
+        <div class="meal-info">
+          <div class="meal-name">${escapeHtml(entry.name)}</div>
+          <div class="meal-time">${entry.time}</div>
+        </div>
+        <div class="meal-cal">${entry.calories} kcal</div>
+        <button class="meal-del" data-id="${entry.id}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2m3 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6h14z"/></svg>
+        </button>`;
+      list.appendChild(card);
+    });
+    list.querySelectorAll('.meal-del').forEach(btn => {
+      btn.addEventListener('click', () => deleteEntry(btn.dataset.id));
+    });
+  }
+
+  function escapeHtml(str){
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  async function refreshDashboard(){
+    document.getElementById('plateDate').textContent = todayLabel();
+    if(!profile){
+      renderRing(0, 2000);
+      renderStats(0, 0);
+      document.getElementById('statBudget').textContent = '—';
+      return;
+    }
+    const { budget } = calcBudget(profile);
+    const consumed = todayEntries.reduce((s,e) => s + e.calories, 0);
+    renderRing(consumed, budget);
+    renderStats(consumed, budget);
+  }
+
+  async function loadTodayEntries(){
+    const raw = await storageGet('log:' + todayKey(), false);
+    todayEntries = raw ? JSON.parse(raw) : [];
+  }
+  async function saveTodayEntries(){
+    await storageSet('log:' + todayKey(), JSON.stringify(todayEntries), false);
+  }
+
+  async function addEntry(name, calories, source){
+    todayEntries.push({
+      id: Date.now().toString(36) + Math.random().toString(36).slice(2,6),
+      name, calories: Math.round(calories), source,
+      time: new Date().toLocaleTimeString('fr-FR', {hour:'2-digit',minute:'2-digit'})
+    });
+    await saveTodayEntries();
+    renderMeals();
+    refreshDashboard();
+  }
+
+  async function deleteEntry(id){
+    todayEntries = todayEntries.filter(e => e.id !== id);
+    await saveTodayEntries();
+    renderMeals();
+    refreshDashboard();
+  }
+
+  /* ---------- Overlays ---------- */
+  function openOverlay(id){ document.getElementById(id).classList.add('open'); }
+  function closeOverlay(id){ document.getElementById(id).classList.remove('open'); }
+
+  async function openProfileSheet(){
+    const savedKey = await storageGet('apikey');
+    document.getElementById('fApiKey').value = savedKey || '';
+    if(profile){
+      document.getElementById('fAge').value = profile.age;
+      document.getElementById('fSex').value = profile.sex;
+      document.getElementById('fHeight').value = profile.height;
+      document.getElementById('fWeight').value = profile.weight;
+      document.getElementById('fActivity').value = profile.activity;
+      selectedGoal = profile.goal;
+      selectedPace = String(profile.pace);
+    }
+    document.querySelectorAll('#goalChoices .choice').forEach(c => c.classList.toggle('selected', c.dataset.goal === selectedGoal));
+    document.querySelectorAll('#paceChoices .choice').forEach(c => c.classList.toggle('selected', c.dataset.pace === selectedPace));
+    document.getElementById('paceField').style.display = selectedGoal === 'maintenir' ? 'none' : 'block';
+    document.getElementById('profileError').classList.add('hidden');
+    openOverlay('profileOverlay');
+  }
+
+  document.getElementById('settingsBtn').addEventListener('click', openProfileSheet);
+
+  document.querySelectorAll('#goalChoices .choice').forEach(c => {
+    c.addEventListener('click', () => {
+      selectedGoal = c.dataset.goal;
+      document.querySelectorAll('#goalChoices .choice').forEach(x => x.classList.toggle('selected', x === c));
+      document.getElementById('paceField').style.display = selectedGoal === 'maintenir' ? 'none' : 'block';
+    });
+  });
+  document.querySelectorAll('#paceChoices .choice').forEach(c => {
+    c.addEventListener('click', () => {
+      selectedPace = c.dataset.pace;
+      document.querySelectorAll('#paceChoices .choice').forEach(x => x.classList.toggle('selected', x === c));
+    });
+  });
+
+  document.getElementById('saveProfileBtn').addEventListener('click', async () => {
+    const age = parseFloat(document.getElementById('fAge').value);
+    const sex = document.getElementById('fSex').value;
+    const height = parseFloat(document.getElementById('fHeight').value);
+    const weight = parseFloat(document.getElementById('fWeight').value);
+    const activity = parseFloat(document.getElementById('fActivity').value);
+    const errEl = document.getElementById('profileError');
+
+    if(!age || !height || !weight){
+      errEl.textContent = 'Merci de remplir l\'âge, la taille et le poids.';
+      errEl.classList.remove('hidden');
+      return;
+    }
+    profile = { age, sex, height, weight, activity, goal: selectedGoal, pace: parseInt(selectedPace,10) };
+    await storageSet('profile', JSON.stringify(profile));
+    const apiKey = document.getElementById('fApiKey').value.trim();
+    if(apiKey){ await storageSet('apikey', apiKey); }
+    closeOverlay('profileOverlay');
+    refreshDashboard();
+  });
+
+  /* Manual entry */
+  document.getElementById('manualBtn').addEventListener('click', () => {
+    document.getElementById('mName').value = '';
+    document.getElementById('mCal').value = '';
+    openOverlay('manualOverlay');
+  });
+  document.getElementById('cancelManualBtn').addEventListener('click', () => closeOverlay('manualOverlay'));
+  document.getElementById('saveManualBtn').addEventListener('click', async () => {
+    const name = document.getElementById('mName').value.trim();
+    const cal = parseFloat(document.getElementById('mCal').value);
+    if(!name || !cal || cal <= 0) return;
+    await addEntry(name, cal, 'manual');
+    closeOverlay('manualOverlay');
+  });
+
+  /* Photo entry */
+  document.getElementById('photoBtn').addEventListener('click', () => {
+    document.getElementById('fileInput').click();
+  });
+  document.getElementById('cancelPhotoBtn').addEventListener('click', () => {
+    closeOverlay('photoOverlay');
+    resetPhotoSheet();
+  });
+
+  function resetPhotoSheet(){
+    document.getElementById('photoPreviewImg').classList.add('hidden');
+    document.getElementById('photoLoading').classList.add('hidden');
+    document.getElementById('photoError').classList.add('hidden');
+    document.getElementById('photoResult').classList.add('hidden');
+    pendingPhotoBase64 = null;
+    pendingPhotoMedia = null;
+  }
+
+  document.getElementById('fileInput').addEventListener('change', async (e) => {
+    const file = e.target.files[0];
+    if(!file) return;
+    resetPhotoSheet();
+    openOverlay('photoOverlay');
+
+    const reader = new FileReader();
+    reader.onload = async () => {
+      const dataUrl = reader.result;
+      const base64 = dataUrl.split(',')[1];
+      pendingPhotoBase64 = base64;
+      pendingPhotoMedia = file.type || 'image/jpeg';
+
+      const img = document.getElementById('photoPreviewImg');
+      img.src = dataUrl;
+      img.classList.remove('hidden');
+      document.getElementById('photoLoading').classList.remove('hidden');
+
+      try{
+        const estimate = await analyzePhoto(base64, pendingPhotoMedia);
+        document.getElementById('photoLoading').classList.add('hidden');
+        document.getElementById('pName').value = estimate.name;
+        document.getElementById('pCal').value = estimate.calories;
+        document.getElementById('pConfidence').textContent = 'Confiance : ' + estimate.confidence;
+        document.getElementById('photoResult').classList.remove('hidden');
+      }catch(err){
+        document.getElementById('photoLoading').classList.add('hidden');
+        const errEl = document.getElementById('photoError');
+        if(err.message === 'no-api-key'){
+          errEl.textContent = "Ajoute une clé API dans les réglages (icône ⚙️) pour activer l'analyse automatique. En attendant, entre les calories toi-même ci-dessous.";
+        } else {
+          errEl.textContent = "Impossible d'analyser la photo automatiquement. Tu peux entrer les calories manuellement ci-dessous.";
+        }
+        errEl.classList.remove('hidden');
+        document.getElementById('pName').value = '';
+        document.getElementById('pCal').value = '';
+        document.getElementById('pConfidence').textContent = '';
+        document.getElementById('photoResult').classList.remove('hidden');
+      }
+    };
+    reader.readAsDataURL(file);
+    e.target.value = '';
+  });
+
+  async function analyzePhoto(base64, mediaType){
+    const apiKey = await storageGet('apikey');
+    if(!apiKey){
+      throw new Error('no-api-key');
+    }
+    const response = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": apiKey,
+        "anthropic-version": "2023-06-01",
+        "anthropic-dangerous-direct-browser-access": "true"
+      },
+      body: JSON.stringify({
+        model: "claude-sonnet-5",
+        max_tokens: 400,
+        messages: [{
+          role: "user",
+          content: [
+            { type: "image", source: { type: "base64", media_type: mediaType, data: base64 } },
+            { type: "text", text: "Tu es un nutritionniste. Regarde cette photo de plat et estime son contenu calorique total pour la portion visible. Réponds UNIQUEMENT avec un objet JSON valide, sans texte autour, sans balises markdown, au format exact: {\"name\": \"nom court du plat en français\", \"calories\": nombre_entier, \"confidence\": \"faible\" ou \"moyenne\" ou \"élevée\"}" }
+          ]
+        }]
+      })
+    });
+    const data = await response.json();
+    const textBlock = (data.content || []).find(b => b.type === 'text');
+    if(!textBlock) throw new Error('no response');
+    let clean = textBlock.text.replace(/```json|```/g,'').trim();
+    const parsed = JSON.parse(clean);
+    if(!parsed.calories || !parsed.name) throw new Error('invalid json');
+    return parsed;
+  }
+
+  document.getElementById('confirmPhotoBtn').addEventListener('click', async () => {
+    const name = document.getElementById('pName').value.trim();
+    const cal = parseFloat(document.getElementById('pCal').value);
+    if(!name || !cal || cal <= 0) return;
+    await addEntry(name, cal, 'photo');
+    closeOverlay('photoOverlay');
+    resetPhotoSheet();
+  });
+
+  /* ---------- Init ---------- */
+  async function init(){
+    const rawProfile = await storageGet('profile', false);
+    if(rawProfile){ profile = JSON.parse(rawProfile); }
+    await loadTodayEntries();
+    renderMeals();
+    await refreshDashboard();
+    if(!profile){
+      selectedGoal = 'maintenir';
+      selectedPace = '500';
+      openProfileSheet();
+    }
+  }
+  init();
+})();
+</script>
+</body>
+</html>
